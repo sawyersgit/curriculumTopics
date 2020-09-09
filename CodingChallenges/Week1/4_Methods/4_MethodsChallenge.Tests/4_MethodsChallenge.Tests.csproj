@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\4_MethodsChallenge\4_MethodsChallenge.csproj" />
+    <ProjectReference Include="..\4_MethodsChallenge-StudentCopy\4_MethodsChallenge.csproj" />
   </ItemGroup>
 
 </Project>
