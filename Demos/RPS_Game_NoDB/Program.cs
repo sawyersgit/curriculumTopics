@@ -6,9 +6,9 @@ namespace RPS_Game_NoDB
 {
     public enum Choice
     {
-        Rock,//can be accessed with a 0
-        Paper,//can be accessed with a 1
-        Scissors//can be accessed with a 2
+        Rock,     //0
+        Paper,    //1 
+        Scissors, //2
     }
     class Program
     {
@@ -18,22 +18,23 @@ namespace RPS_Game_NoDB
             List<Game> games = new List<Game>();
             List<Round> rounds = new List<Round>();
             int choice;
+
             Player computer = new Player() { Name = "Computer" };//instantiate a Player and give a value to the Name all at once.
             players.Add(computer);
             int gameCounter = 1;
 
             do//game loop
             {
-                System.Console.WriteLine($"\n\t\tThis is game #{gameCounter++}\n\n");
+                System.Console.WriteLine($"\n\t\t2Rock Paper Scissors. This is game #{gameCounter++}");
 
                 //get a choice from the user (play or quit)
                 bool inputInt;
                 do//prompt loop
                 {
-                    System.Console.WriteLine("Please choose 1 for Play or 2 for Quit");
+                    System.Console.WriteLine("Please choose 1 for Play, or 2 for Quit");
                     string input = Console.ReadLine();
                     inputInt = int.TryParse(input, out choice);
-                } while (!inputInt || choice <= 0 || choice >= 3);//end of promt loop
+                } while (!inputInt || choice <= 0 || choice >= 3);//end of prompt loop
 
                 if (choice == 2)//if the user chose 2, break out of the game.
                 {
@@ -57,7 +58,7 @@ namespace RPS_Game_NoDB
                     }
                 }
 
-                if (p1.Name == "null")//means the players name was not found above
+                if (p1.Name == "null")//means the players name was not found above; add new player to list
                 {
                     p1.Name = playerName;
                     players.Add(p1);
@@ -102,76 +103,50 @@ namespace RPS_Game_NoDB
 
                     //search the game.rounds List<> to see if one player has 2 wins
                     //if not loop to another round
-                    int numP1Wins = game.rounds.Count(x => x.Outcome == 1);//get nhow many rounds p1 has won.
-                    int numComputerWins = game.rounds.Count(x => x.Outcome == 2);//get nhow many rounds p1 has won.
+                    int numP1Wins = game.rounds.Count(x => x.Outcome == 1);//get how many rounds p1 has won.
+                    int numComputerWins = game.rounds.Count(x => x.Outcome == 2);//get how many rounds computer has won.
 
                     //assign the winner to the game and increment wins and losses for both
-                    System.Console.WriteLine($"\tp1wins => {numP1Wins} \n\tcomputer wins {numComputerWins}");
+                    System.Console.WriteLine($"\tP1wins => {numP1Wins} \n\tComputer wins {numComputerWins}");
                     if (numP1Wins == 2)
                     {
                         game.winner = p1;
                         p1.record["wins"]++;//increments wins and losses.
                         computer.record["losses"]++;//increments wins and losses.
+                        System.Console.WriteLine($"\t\t{game.winner.Name} wins!");//Announces winner
                     }
                     else if (numComputerWins == 2)
                     {
                         game.winner = computer;
                         p1.record["losses"]++;//increments wins and losses.
                         computer.record["wins"]++;//increments wins and losses.
+                        System.Console.WriteLine($"\t\t{game.winner.Name} wins!");//Announces winner
                     }
-
-                    //game.winner.Name = "mark";//placeholder to escape loop during testing.
-
-
                 }//end of rounds loop
 
                 games.Add(game);
 
-
-
-                //play rounds till one player has 2 wins
-                //record each round into the game
-
-                //record the game
-
-                //increment wins/losses for each player
-
-                //print out the game results - rounds data
-
-
-
             } while (choice != 2);//end of game loop
 
-
             PrintAllCurrentData(games, players, rounds);
-
-
-
-
-            //on quitting....
-            //print out the win.loss record for all players
-
         }//end of main
-
         public static void PrintAllCurrentData(List<Game> games, List<Player> players, List<Round> rounds)
         {
             foreach (var game in games)
             {
-                System.Console.WriteLine($"Player1 Name => {game.Player1.Name}\ncomputer Name => {game.Computer.Name}\n winner is => {game.winner.Name}");
-                System.Console.WriteLine($"\t--- Here are the games rounds --- ");
+                System.Console.WriteLine($"Player1 Name => {game.Player1.Name}\nComputer Name => {game.Computer.Name}\n Winner is => {game.winner.Name}");
+                System.Console.WriteLine($"\t--- Games Rounds --- ");
                 foreach (Round round in game.rounds)
                 {
-                    System.Console.WriteLine($"player1 => {round.player1.Name}, p1 choice => {round.p1Choice}");
-                    System.Console.WriteLine($"player2 => {round.Computer.Name}, computer choice => {round.ComputerChoice}");
-                    System.Console.WriteLine($"the Outcome of this round is =>{round.Outcome}");
-
-
+                    System.Console.WriteLine($"Player1 => {round.player1.Name}, P1 choice => {round.p1Choice}");
+                    System.Console.WriteLine($"Player2 => {round.Computer.Name}, Computer choice => {round.ComputerChoice}");
+                    System.Console.WriteLine($"Round Outcome =>{round.Outcome}");
                 }
             }
-            System.Console.WriteLine("Here is the list of players.");
+            System.Console.WriteLine("Player Roster.");
             foreach (var player in players)
             {
-                System.Console.WriteLine($"This players nasme is {player.Name} and he has {player.record["wins"]} wins and {player.record["losses"]} losses");
+                System.Console.WriteLine($"Player {player.Name} is {player.record["wins"]} - {player.record["losses"]}2");
             }
 
         }
