@@ -5,46 +5,71 @@ namespace Delegates
     class Program
     {
         //a delegate has a particular param list and return type.
-        public delegate double PerformCalculation(double x, double y);
+        public delegate void PerformCalculation(SampleObject x);
 
         static void Main(string[] args)
         {
             PerformCalculation pc = Multiply;//[0] of invocationList
-            pc = pc += Subtract;             // [1] of invocationList
+            pc = pc + Subtract;             // [1] of invocationList
             pc += Divide;                   // [2] of invocationList
 
             pc -= Subtract;//take one method out of the list.
 
-            double result = pc(5.1, 6.1);
+            NewMethod nm = new NewMethod();
+            pc += nm.NewClassMethod;
+            SampleObject sampleO = new SampleObject();
+            sampleO.X = 10.0;
+            sampleO.Y = 100.0;
+            sampleO.Total = 0;
 
-            System.Console.WriteLine(result);//gives the result of Divide() only
+            pc(sampleO);
+
+            System.Console.WriteLine(sampleO.Total);//gives the result of Divide() only
+
             System.Console.WriteLine("\nStarting ForEach loop.\n");
-            double result1 = 0;
-            foreach (var item in pc.GetInvocationList())
+            //double result1 = 0;
+            foreach (Delegate item in pc.GetInvocationList())
             {
-                if (result1 == 0)
+                if (sampleO.Total == 0)
                 {
-                    result1 = (double)item.DynamicInvoke(5.1, 6.1);
-                    System.Console.WriteLine(result1);
+                    item.DynamicInvoke(sampleO);
+                    //System.Console.WriteLine(result1);
                 }
                 else
                 {
-                    result1 = (double)item.DynamicInvoke(result1, result1);
-                    System.Console.WriteLine(result1);
+                    item.DynamicInvoke(sampleO);
+                    // System.Console.WriteLine(result1);
                 }
             }
+
+            System.Console.WriteLine($"\tsample.Total is {sampleO.Total}.");
         }
 
         // method 1
-        public static double Multiply(double x, double y)
-        { return x * y; }
+        public static void Multiply(SampleObject x)
+        {
+            x.Total = x.X * x.Y;
+        }
 
         //method 2
-        public static double Subtract(double x, double y)
-        { return x - y; }
+        public static void Subtract(SampleObject x)
+        {
+            x.Total = x.X - x.Y;
+        }
 
         //method 3
-        public static double Divide(double x, double y)
-        { return x / y; }
+        public static void Divide(SampleObject x)
+        {
+            x.Total = x.X / x.Y;
+        }
+    }
+
+    //now create a separate class with a method to add to the delegate.
+    public class NewMethod
+    {
+        public void NewClassMethod(SampleObject x)
+        {
+            x.Total = Math.Pow(x.X, x.Y);
+        }
     }
 }
