@@ -153,6 +153,12 @@ namespace RPS_Game_NoDB
 
         }//end of main
 
+        /// <summary>
+        /// This method takes 3 lists and prints out the contents of all of them.
+        /// </summary>
+        /// <param name="games"></param>
+        /// <param name="players"></param>
+        /// <param name="rounds"></param>
         public static void PrintAllCurrentData(List<Game> games, List<Player> players, List<Round> rounds)
         {
             foreach (var game in games)
