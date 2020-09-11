@@ -6,7 +6,6 @@ namespace EventHandling
     {
         static void Main(string[] args)
         {
-            // Console.WriteLine("Hello World!");
             File file = new File() { Title = "File 1" };//create a sample file to pass around
             DownloadHelper downloadHelper = new DownloadHelper();//this is the publisher
             UnpackService unpackService = new UnpackService(); //this is the receiver
