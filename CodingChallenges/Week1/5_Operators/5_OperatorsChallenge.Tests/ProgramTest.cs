@@ -6,7 +6,7 @@ namespace _5_OperatorsChallenge.Tests
 {
     public class ProgramTest
     {
-       public static readonly IEnumerable<object[]> _singleNumbers = new List<object[]>
+        public static readonly IEnumerable<object[]> _singleNumbers = new List<object[]>
         {
             new object[] {1},
             new object[] {2},
@@ -20,22 +20,25 @@ namespace _5_OperatorsChallenge.Tests
             new object[] {3,4},
             new object[] {4,5}
         };
-         
+
         [Theory]
         [MemberData(nameof(_singleNumbers))]
-        public void IncrementShouldIncrement(int input){
-            Assert.Equal(++input, Program.Increment(input));
+        public void IncrementShouldIncrement(int input)
+        {
+            Assert.Equal(Program.Increment(input), ++input);
         }
 
         [Theory]
         [MemberData(nameof(_singleNumbers))]
-        public void DecrementShouldDecrement(int input){
-            Assert.Equal(--input, Program.Decrement(input));
+        public void DecrementShouldDecrement(int input)
+        {
+            Assert.Equal(Program.Decrement(input), --input);
         }
 
         [Theory]
         [MemberData(nameof(_singleNumbers))]
-        public void NegateShouldNegate(int input){
+        public void NegateShouldNegate(int input)
+        {
             Assert.Equal(-input, Program.Negate(input));
         }
 
@@ -50,35 +53,35 @@ namespace _5_OperatorsChallenge.Tests
         [MemberData(nameof(_pairNumbers))]
         public void SumShouldReturnSum(int num1, int num2)
         {
-            Assert.Equal(num1+num2, Program.Sum(num1, num2));
+            Assert.Equal(num1 + num2, Program.Sum(num1, num2));
         }
 
         [Theory]
         [MemberData(nameof(_pairNumbers))]
         public void DiffShouldReturnDiff(int num1, int num2)
         {
-            Assert.Equal(num1-num2, Program.Diff(num1, num2));
+            Assert.Equal(num1 - num2, Program.Diff(num1, num2));
         }
 
         [Theory]
         [MemberData(nameof(_pairNumbers))]
         public void ProductShouldReturnProduct(int num1, int num2)
         {
-            Assert.Equal(num1*num2, Program.Product(num1, num2));
+            Assert.Equal(num1 * num2, Program.Product(num1, num2));
         }
 
         [Theory]
         [MemberData(nameof(_pairNumbers))]
         public void QuotientShouldReturnQuotient(int num1, int num2)
         {
-            Assert.Equal(num1/num2, Program.Quotient(num1, num2));
+            Assert.Equal(num1 / num2, Program.Quotient(num1, num2));
         }
 
         [Theory]
         [MemberData(nameof(_pairNumbers))]
         public void RemainderShouldReturnRemainder(int num1, int num2)
         {
-            Assert.Equal(num1%num2, Program.Remainder(num1, num2));
+            Assert.Equal(num1 % num2, Program.Remainder(num1, num2));
         }
 
         [Theory]
@@ -93,6 +96,6 @@ namespace _5_OperatorsChallenge.Tests
         {
             Assert.False(Program.Or(num1, num2));
         }
-        
+
     }
 }
