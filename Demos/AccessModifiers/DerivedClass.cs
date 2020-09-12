@@ -2,9 +2,9 @@ namespace AccessModifiersPractice
 {
     public class DerivedClass : PublicClass
     {
-        override internal void InternalMethod()
+        internal override void InternalMethod()
         {
-            System.Console.WriteLine("This is DerivedClass.InternalMethod()");
+            System.Console.WriteLine("This is overridden Child DerivedClass.InternalMethod()");
         }
 
         public void CallsProtectedMethod()

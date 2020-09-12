@@ -11,7 +11,11 @@ namespace AccessModifiersPractice
             PublicClass pc = new PublicClass();
             pc.ProtectedInternalMethod();
             pc.PublicMethod();
+            pc.PublicMethod(3);
             pc.InternalMethod();
+
+            int myint1 = pc.MyInt;
+            //pc.MyInt = 2;//cant change a readonly value.
 
             DerivedClass dc = new DerivedClass();
             dc.InternalMethod();
@@ -21,8 +25,13 @@ namespace AccessModifiersPractice
             PublicClass pc1 = new DerivedClass();
             pc1.InternalMethod();
 
+            DerivedClass pc2 = (DerivedClass)pc1;//cast the Public class to an instance of a derived class
+            pc2.InternalMethod();
+
             DerivedClass dc1 = new DerivedClass();
             dc1.ProtectedInternalMethod();
+
+            dc.CallsProtectedMethod();
 
 
         }
