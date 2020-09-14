@@ -9,9 +9,7 @@ namespace RPS_Game_Refactored
         /// <summary>
         /// Get a choice of 1 (play) or 2 (quit) from the user
         /// </summary>
-        /// <returns>
-        /// integer
-        /// </returns>
+        /// <returns>int</returns>
         public static int GetUsersIntent()
         {
             int choice;//this is be out variable choice of the player to 1 (play) or 2 (quit)
@@ -67,9 +65,10 @@ namespace RPS_Game_Refactored
         /// <returns></returns>
         public static string GetPlayerName()
         {
+            //TODO : add checking for user enters "Computer" as their name
             System.Console.WriteLine("What is your name?");
             string playerName = Console.ReadLine();
-            playerName.Trim();//take off beginning or ending white space
+            playerName = playerName.Trim();//take off beginning or ending white space
             return playerName;
         }
 
