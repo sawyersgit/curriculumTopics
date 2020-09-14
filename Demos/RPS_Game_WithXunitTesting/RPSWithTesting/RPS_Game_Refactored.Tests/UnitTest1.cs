@@ -1,6 +1,19 @@
 using System;
 using Xunit;
 
+//use this to input from console iinto the method
+// using (var sw = new StringWriter())
+// {
+//     using (var sr = new StringReader("2"))
+//     {
+//         Console.SetOut(sw);
+//         Console.SetIn(sr);
+//         int intent = RpsGameMethods.GetUsersIntent();
+//         Assert.Equal(2, intent);
+//     }
+// }
+
+
 namespace RPS_Game_Refactored.Tests
 {
     public class UnitTest1
