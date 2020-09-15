@@ -71,7 +71,7 @@ namespace AsyncAwait
             //     System.Console.WriteLine($"The third time is {time3}");
         }//end of Main()
 
-        // This event will fire based ont he trigger interal set above.
+        // This event will fire based ont he trigger internal set above.
         public static void OnTimedEvent(Object source, System.Timers.ElapsedEventArgs e)
         {
             System.Console.WriteLine($"The time now is {e.SignalTime}");
