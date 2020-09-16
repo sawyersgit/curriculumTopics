@@ -8,10 +8,42 @@ namespace AsyncAwait
     {
         public async Task Method1Async()//convention says to add Async in the name of the method
         {
-            await Task.Delay(5000);
-            System.Console.WriteLine("Just after await 5 secs");
-            Thread.Sleep(5000);
-            System.Console.WriteLine("In method waited 5 seconds");
+            Task task = Task.Delay(5000);
+            // await Task.Delay(5000);
+            System.Console.WriteLine("Method1Async - Just after await 5 secs");
+            await task;
+        }
+
+        public async Task Method2Async()//convention says to add Async in the name of the method
+        {
+            Task task = Task.Delay(3000);
+            // await Task.Delay(5000);
+            System.Console.WriteLine("Method2Async - Just after await 3 secs");
+            await task;
+        }
+
+        public async Task Method3Async()//convention says to add Async in the name of the method
+        {
+            Task task = Task.Delay(3000);
+            // await Task.Delay(5000);
+            System.Console.WriteLine("Method3Async - Just after await 3 secs");
+            await task;
+        }
+
+        public async Task Method4Async()//convention says to add Async in the name of the method
+        {
+            Task task = Task.Delay(3000);
+            // await Task.Delay(5000);
+            System.Console.WriteLine("Method4Async - Just after await 3 secs");
+            await task;
+        }
+
+        public async Task Method5Async()//convention says to add Async in the name of the method
+        {
+            Task task = Task.Delay(3000);
+            // await Task.Delay(5000);
+            System.Console.WriteLine("Method5Async - Just after await 3 secs");
+            await task;
         }
 
 

@@ -17,7 +17,6 @@ namespace Rps_Game_Refactored.Tests
             Choice result = RpsGameMethods.GetRandomChoice();
 
             //Assert
-            // Assert.Equals(Choice.Paper || Choice.Rock || Choice.Scissors, )
             Assert.IsType<Choice>(result);
         }
 
